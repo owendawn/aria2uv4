@@ -213,7 +213,7 @@
 
 <script>
 import {ref, reactive, onUnmounted} from 'vue';
-import { showToast } from 'vant'
+import { showToast, showFailToast } from 'vant'
 import ToDownload from './download-todo'
 import {getDownloadsAndGlobalOptions, addLink, addBt, addMetaLink} from '@/api/todo'
 import store from '../store';
@@ -280,6 +280,13 @@ export default {
       }
       if (linkTmp["ftp-passwd"] === '') {
         linkTmp["ftp-passwd"] = undefined
+      }
+      if(linkTmp.link){
+        let str=linkTmp.link.trim().toUpperCase()
+        if(str.indexOf('ED2K://')===0){
+          showFailToast(`暂不支持该协议的下载功能！！！`);
+          return
+        }
       }
       addLink(linkTmp.link, linkTmp).then(re => {
         opts.showLinkDiv = false
