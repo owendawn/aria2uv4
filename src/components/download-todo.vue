@@ -5,7 +5,7 @@
       <template #title>
         <div style="text-align: left;word-break: break-all;font-weight: bold">{{ opt.name }}</div>
         <van-progress :percentage="opt.percent" style="margin:6px 0"/>
-        <van-row gutter="20" style="font-size: 0.5rem;color: #817e7e;">
+        <van-row gutter="20" style="font-size: 0.7rem;color: #817e7e;">
           <van-col span="8" style="text-align: left;min-width: 140px">
             <i class="fa fa-signal"/> {{ info.connections }}
             <i class="fa fa-magnet"/> {{ info.numSeeders }}
